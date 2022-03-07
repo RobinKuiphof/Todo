@@ -44,12 +44,18 @@ function index(){
         }else{
             $status = 1;
         }
+
         updateitem($_GET['id'], $_GET['title'], $status, $duration);
     }
 
     $list = getlist();
     foreach($list as $lists){
-        $listitem = getlistitems($lists['Id']);  
+        if(empty($_GET['sortdur'])){
+            $listitem = getlistitems($lists['Id']);  
+        }else{
+            $listitem = getlistitemssorted($lists['Id']);  
+        }
+       
         array_push($listitems, $listitem);
     }
 

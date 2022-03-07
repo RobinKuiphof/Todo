@@ -24,8 +24,17 @@ $data = index();
                     </button>
                     <input type="hidden" name="value" value="<?=$i?>">
                     <input type="hidden" name="updatetitle" value="1">
+                    <input type="hidden" name="sortdur" value="<?=$_GET['sortdur']?>">
                 </form>
             </h4>
+            
+            <h6>
+                <form>
+                    <button class="border-0 display-inline-block card-text btn-link button" name="sortdur" value="1" type="submit">
+                       Order by duration             
+                    </button>
+                </form>
+            </h6>
             <div class="card-body">
             <? for($x=0; $x<count($data['Listitems'][$i]); $x++){ ?>
                 <form class="form-inline my-2 my-lg-0">
@@ -34,7 +43,8 @@ $data = index();
                     </button>
                     <input type="hidden" name="value" value="<?=$i?>">
                     <input type="hidden" name="valuex" value="<?=$x?>">
-                    <button class="text-danger border-0 display-inline-block card-text btn-link button" name="removeitem" value="<?=$data['Listitems'][$i][$x]['Id']?>" type="submit">
+                    <input type="hidden" name="sortdur" value="<?=$_GET['sortdur']?>">
+                    <button style="margin-bottom:11px !important" class="text-danger border-0 display-inline-block card-text btn-link button" name="removeitem" value="<?=$data['Listitems'][$i][$x]['Id']?>" type="submit">
                         <i class="bi-trash"></i>
                     </button>
                 </form>
@@ -52,6 +62,7 @@ $data = index();
     <input class="w-75 m-auto" name="title" type="text" value="<?=$data['Lists'][$_GET['value']]['Name']?>">
     <input name="id" type="hidden" value="<?=$_GET['editlist']?>">
     <input class="w-75 m-auto" type="submit">
+    <input type="hidden" name="sortdur" value="<?=$_GET['sortdur']?>">
 </form>
 
 
@@ -62,10 +73,11 @@ $data = index();
             <br>
             <input name="duration" type="number" placeholder="Time in minutes" value="<?=$data['Listitems'][$_GET['value']][$_GET['valuex']]['Time']?>">
             <br>
-            <input name="done" type="checkbox" value="1"><label>Done?</label>
+            <input <? if($data['Listitems'][$_GET['value']][$_GET['valuex']]['Status'] == 1){ ?> checked<? } ?> name="done" type="checkbox" value="1"><label>Done?</label>
             <br>
             <input name="id" type="hidden" value="<?=$_GET['editblock']?>">
             <input class="w-75 m-auto" name="itemupdate" type="submit">
+            <input type="hidden" name="sortdur" value="<?=$_GET['sortdur']?>">
         </form>
 
 <?php

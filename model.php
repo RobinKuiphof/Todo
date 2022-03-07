@@ -52,12 +52,21 @@ function updateitem($id, $text, $status, $duration){
     $stmt->execute();
 }
 
-function getlistitems($list){
+function getlistitemssorted($list){
     $stmt = conn()->prepare("SELECT * FROM tasks where List = :list order by Time desc");
     $stmt->bindParam(":list", $list);
     $stmt->execute();
     $result = $stmt->fetchAll();
     return $result;
 }
+
+function getlistitems($list){
+    $stmt = conn()->prepare("SELECT * FROM tasks where List = :list");
+    $stmt->bindParam(":list", $list);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+}
+
 
 ?>
