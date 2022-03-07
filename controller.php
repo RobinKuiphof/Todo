@@ -17,7 +17,6 @@ function index(){
     
     if(!empty($_GET['additem'])){
         $list = explode('-', $_GET['additem']);
-        echo $list[1];
         additem('item', $list[1]);
     }
 
@@ -27,6 +26,14 @@ function index(){
 
     if(!empty($_GET['removelist'])){
         deletelist($_GET['removelist']);
+    }
+
+    if(!empty($_GET['updatetitle'])){
+        updatelistname($_GET['title'], $_GET['id']);
+    }
+
+    if(!empty($_GET['itemupdate'])){
+        updateitem($_GET['id'], $_GET['title']);
     }
 
     $list = getlist();
