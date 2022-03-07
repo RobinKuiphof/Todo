@@ -57,7 +57,13 @@ $data = index();
 
 <?php }else{ ?>
         <form class="text-center">
+        <br>
             <input class="w-75 m-auto" name="title" type="text" value="<?=$data['Listitems'][$_GET['value']][$_GET['valuex']]['Text']?>">
+            <br>
+            <input name="duration" type="number" placeholder="Time in minutes" value="<?=$data['Listitems'][$_GET['value']][$_GET['valuex']]['Time']?>">
+            <br>
+            <input name="done" type="checkbox" value="1"><label>Done?</label>
+            <br>
             <input name="id" type="hidden" value="<?=$_GET['editblock']?>">
             <input class="w-75 m-auto" name="itemupdate" type="submit">
         </form>

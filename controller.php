@@ -33,7 +33,18 @@ function index(){
     }
 
     if(!empty($_GET['itemupdate'])){
-        updateitem($_GET['id'], $_GET['title']);
+        if(empty($_GET['duration'])){
+            $duration = 0;
+        }else{
+            $duration = $_GET['duration'];
+        }
+
+        if(empty($_GET['done'])){
+            $status = 0;
+        }else{
+            $status = 1;
+        }
+        updateitem($_GET['id'], $_GET['title'], $status, $duration);
     }
 
     $list = getlist();

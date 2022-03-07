@@ -43,15 +43,17 @@ function deleteitem($id){
     $stmt->execute();
 }
 
-function updateitem($id, $text){
-    $stmt = conn()->prepare("UPDATE tasks SET Text=:text where Id = :id");
+function updateitem($id, $text, $status, $duration){
+    $stmt = conn()->prepare("UPDATE tasks SET Text=:text, Status=:status, Time=:duration where Id = :id");
+    $stmt->bindParam(":status", $status);
+    $stmt->bindParam(":duration", $duration);
     $stmt->bindParam(":text", $text);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 }
 
 function getlistitems($list){
-    $stmt = conn()->prepare("SELECT * FROM tasks where List = :list");
+    $stmt = conn()->prepare("SELECT * FROM tasks where List = :list order by Time desc");
     $stmt->bindParam(":list", $list);
     $stmt->execute();
     $result = $stmt->fetchAll();
