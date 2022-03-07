@@ -17,5 +17,45 @@ function getlist(){
     return $result;
 }
 
+function updatelistname($name, $id){
+    $stmt = conn()->prepare("UPDATE lists SET Name=:name where Id = :id");
+    $stmt->bindParam(":name", $name);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+}
+
+function deletelist($id){
+    $stmt = conn()->prepare("DELETE FROM lists where Id = :id");
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+}
+
+function additem($text, $list){
+    $stmt = conn()->prepare("INSERT INTO tasks (Text, List) Values (:text, :lists)");
+    $stmt->bindParam(":lists", $list);
+    $stmt->bindParam(":text", $text);
+    $stmt->execute();
+}
+
+function deleteitem($id){
+    $stmt = conn()->prepare("DELETE FROM tasks where Id = :id");
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+}
+
+function updateitem($id, $text){
+    $stmt = conn()->prepare("UPDATE tasks SET Text=:text where Id = :id");
+    $stmt->bindParam(":text", $text);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+}
+
+function getlistitems($list){
+    $stmt = conn()->prepare("SELECT * FROM tasks where List = :list");
+    $stmt->bindParam(":list", $list);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    return $result;
+}
 
 ?>
