@@ -37,7 +37,7 @@ $data = index();
             </h6>
             <div class="card-body">
             <? for($x=0; $x<count($data['Listitems'][$i]); $x++){ ?>
-                <form class="form-inline my-2 my-lg-0">
+                <form <?php if($data['Listitems'][$i][$x]['Status'] == 0){ ?> class="red form-inline my-2 my-lg-0" <?}else{ ?>class="green form-inline my-2 my-lg-0" <? } ?>>
                     <button class="card-text btn-link button display-inline-block" name="editblock" value="<?=$data['Listitems'][$i][$x]['Id']?>" style="width:80%" type="submit">
                         <?=$data['Listitems'][$i][$x]['Text']?>
                     </button>

@@ -15,3 +15,11 @@ form{
     margin: 5px auto;
     
 }
+
+.red button:nth-of-type(1){
+    background-color: red!important;
+}
+
+.green button:nth-of-type(1){
+    background-color: green!important;
+}
