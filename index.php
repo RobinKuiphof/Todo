@@ -13,7 +13,7 @@ $data = index();
     <? for($i=0; $i<count($data["Lists"]); $i++){ ?>
 
 
-        <div class="card w-25 m-5 p-2 d-inline-block">
+        <div class="card w-25 m-5 p-2 d-inline-block align-top">
             <h4 class="card-title text-center">    
                 <form class="m-auto display-inline-block text-center ">    
                     <button class="border-0 display-inline-block card-text btn-link button" name="editlist" value="<?=$data['Lists'][$i]['Id']?>" type="submit">
@@ -71,7 +71,7 @@ $data = index();
         <br>
             <input class="w-75 m-auto" name="title" type="text" value="<?=$data['Listitems'][$_GET['value']][$_GET['valuex']]['Text']?>">
             <br>
-            <input name="duration" type="number" placeholder="Time in minutes" value="<?=$data['Listitems'][$_GET['value']][$_GET['valuex']]['Time']?>">
+            <input name="duration" type="number" placeholder="Time in minutes" value="<?=$data['Listitems'][$_GET['value']][$_GET['valuex']]['Time']?>"><label >Minuten</label>
             <br>
             <input <? if($data['Listitems'][$_GET['value']][$_GET['valuex']]['Status'] == 1){ ?> checked<? } ?> name="done" type="checkbox" value="1"><label>Done?</label>
             <br>
