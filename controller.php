@@ -28,7 +28,7 @@ function index(){
         deletelist($_GET['removelist']);
     }
 
-    if(!empty($_GET['updatetitle'])){
+    if(!empty($_GET['title'])){
         updatelistname($_GET['title'], $_GET['id']);
     }
 

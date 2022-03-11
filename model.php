@@ -31,8 +31,6 @@ function deletelist($id){
 }
 
 function additem($text, $list){
-    echo $list;
-    echo $text;
     $stmt = conn()->prepare("INSERT INTO tasks (Text, List, Status, Time) Values (:text, :lists,0,0)");
     $stmt->bindParam(":lists", $list);
     $stmt->bindParam(":text", $text);
